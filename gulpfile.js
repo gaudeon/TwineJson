@@ -74,4 +74,9 @@ gulp.task('clean-dist', function() {
         .pipe(clean());     
 });
 
-gulp.task('default', gulp.series('clean-dist', 'buildRequireJS', 'fileincluder-html','minify-html','escape-js','fileincluder-format','clean-dist'));
+gulp.task('copy-docs', function() {
+  return gulp.src('./dist/*')
+         .pipe(gulp.dest('docs/'))
+});
+
+gulp.task('default', gulp.series('clean-dist', 'buildRequireJS', 'fileincluder-html','minify-html','escape-js','fileincluder-format','clean-dist','copy-docs'));
