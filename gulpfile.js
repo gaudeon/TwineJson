@@ -4,7 +4,6 @@ var shell = require('gulp-shell')
 var minifyHTML = require('gulp-minify-html');
 var fileincluder = require('gulp-file-includer')
 var jsEscape = require('gulp-js-escape');
-var runSequence = require('run-sequence');
 var clean = require('gulp-clean');
 var debug = require('gulp-debug');
 
@@ -71,11 +70,8 @@ gulp.task('clean-dist', function() {
         //.pipe(clean()); 
   //gulp.src('./dist/escaped', {read: false})
        // .pipe(clean());
-  return gulp.src('./build/out.js', {read: false})
+  return gulp.src('./build/out.js', {read: false, allowEmpty: true})
         .pipe(clean());     
 });
 
-gulp.task('default', function() {
-  runSequence('clean-dist', 'buildRequireJS', 'fileincluder-html','minify-html','escape-js','fileincluder-format','clean-dist');
-});
-
+gulp.task('default', gulp.series('clean-dist', 'buildRequireJS', 'fileincluder-html','minify-html','escape-js','fileincluder-format','clean-dist'));
