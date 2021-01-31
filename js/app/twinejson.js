@@ -45,6 +45,10 @@
   
         var hierarchyJSON = treebuilder.build(jsonObject);
 
+        console.log('====== HIERARCHICAL JSON OBJECT AFTER EXPORT ======');
+        console.dir(hierarchyJSON);
+        console.log('====== END JSON OBJECT ======');
+
         if(hierarchyJSON.length === 0)
         {
           printer.syntaxHighlight('Stories with cyclic references aren\'t allowed in hierarchical JSON structures', $('#output'));
@@ -61,12 +65,12 @@
             $('#output').removeClass('invalid');
         }
      
-        if(options.saveAsFile)
+        /*if(options.saveAsFile)
         {
           this.saveAsFile('plain-'+stage.title,JSON.stringify(_jsonObject, null, 2));
         }
 
-        printer.syntaxHighlight(JSON.stringify(_jsonObject, null, 4), $('#outputPlain'));
+        printer.syntaxHighlight(JSON.stringify(_jsonObject, null, 4), $('#outputPlain'));*/
       },
       
       saveAsFile: function(title, text) {
