@@ -65,12 +65,12 @@
             $('#output').removeClass('invalid');
         }
      
-        /*if(options.saveAsFile)
+        if(options.saveAsFile)
         {
           this.saveAsFile('plain-'+stage.title,JSON.stringify(_jsonObject, null, 2));
         }
 
-        printer.syntaxHighlight(JSON.stringify(_jsonObject, null, 4), $('#outputPlain'));*/
+        printer.syntaxHighlight(JSON.stringify(_jsonObject, null, 4), $('#outputPlain'));
       },
       
       saveAsFile: function(title, text) {
